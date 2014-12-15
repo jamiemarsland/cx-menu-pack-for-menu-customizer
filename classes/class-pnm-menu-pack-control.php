@@ -49,8 +49,13 @@ if ( ! class_exists( 'PNM_Menu_Pack_Control' ) ) :
                     <?php
 
                     foreach ($this->menus as $name => $settings) {
+                        if (strrpos($name, '.txt') === strlen($name) - 4) {
+                            $displayName = substr($name, 0, strlen($name) - 4);
+                        } else {
+                            $displayName = $name;
+                        }
                         ?>
-                        <option value="<?php esc_attr_e($name) ?>" ><?php esc_html_e($name) ?></option>
+                        <option value="<?php esc_attr_e($name) ?>" ><?php esc_html_e($displayName) ?></option>
                         <?php
                     }
 
